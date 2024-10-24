@@ -1,21 +1,12 @@
-
 import Image from "next/image";
-import MyCard from "./components/myCard";
-import ClientButton from "./components/clientButton";
-import Link from "next/link";
 
 
-export default function Home() {
-  
 
-
+export default function ProductList() {
   return (
-
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">    
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <MyCard></MyCard>
-      <Link href={"pages/testvalues"} className="bg-blue-500 text-white font-bold p-4 rounded ">Test Values</Link>
-      <ClientButton></ClientButton>
+        <h1>ProducList</h1>
         <Image
           className="dark:invert"
           src="https://nextjs.org/icons/next.svg"
