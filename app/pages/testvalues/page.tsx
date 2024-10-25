@@ -9,7 +9,7 @@ const [counter, setCount] = useState(0);
 const var1 = "hello";
 
 
-let counter2 = useRef(1);
+const counter2 = useRef(1);
 
 const handleClick = () => {
     setCount(counter + 1);
