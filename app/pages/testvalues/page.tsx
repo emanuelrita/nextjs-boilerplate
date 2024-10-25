@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { useRef } from "react";
-import ComponentValue from "./componentValue";
+import ComponentValue from "@/components/ui/componentValue";
 
 
 
@@ -44,7 +44,6 @@ export default function ValuesPage() {
                     <ComponentValue StringValue={inputValue} />
                 </div>                
             </div>
-
         </div>
     )
 }
