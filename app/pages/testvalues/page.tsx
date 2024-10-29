@@ -6,7 +6,7 @@ import ComponentValue from "@/components/ui/componentValue";
 
 
 
-export default function ValuesPage() {
+export default function Page() {
 
     const [estado, setEstado] = useState(0);
     const var1 = "hello";

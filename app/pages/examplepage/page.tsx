@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 
 
-export default function examplePage() {
+export default function Page() {
 
     const [var1, setVar1] = useState("hello");
 
