@@ -6,7 +6,7 @@ export default async function Page() {
 
   return (
     <ul role="list" className="divide-y divide-gray-100">
-      {Products?.length > 0 ? (
+      {Products != null ? (
         Products.map((product) => (
           <li key={product.id} className="flex justify-between gap-x-6 py-5">
             <div className="flex min-w-0 gap-x-4">
