@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 
 export default async function Page() {
   const supabase = await createClient();
-  const { data: Products } = await supabase.from('Products').select('*');
+  const { data: Products } = await supabase.from('Products').select('id,Name,Description,Price,ProductType(TypeName)');
 
   return (
     <ul role="list" className="divide-y divide-gray-100">
@@ -13,6 +13,10 @@ export default async function Page() {
               <div className="min-w-0 flex-auto">
                 <p className="text-sm/6 font-semibold text-gray-900">{product.Name}</p>
                 <p className="mt-1 truncate text-xs/5 text-gray-500">{product.Description}</p>
+                <p className="mt-1 truncate text-xs/5 text-gray-500">{JSON.stringify(product.ProductType)}</p>
+                {product.ProductType != null && (
+                  <p className="mt-1 truncate text-xs/5 text-gray-500">{product.ProductType.TypeName}</p>
+                )}
               </div>
             </div>
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
@@ -26,6 +30,9 @@ export default async function Page() {
     </ul>
   );
 }
+
+
+
 
 
 
