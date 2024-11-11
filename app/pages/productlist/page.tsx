@@ -1,25 +1,22 @@
 import { createClient } from '@/utils/supabase/server'
+import {  QueryData } from '@supabase/supabase-js'
 
-type Product = {
-  id: number
-  Name: string
-  Description: string
-  Price: number
-  ProductType: {
-    TypeName: string
-  }
-}
 
 export default async function Page() {
   const supabase = await createClient()
-  const { data: products } = await supabase
-    .from('Products')
-    .select('id, Name, Description, Price, ProductType(TypeName)')
+  const productsWithTypeQuery = supabase
+    .from("Products")
+    .select(`id, Name, Description, Price, ProductType(TypeName)`);
+  type ProductsWithType = QueryData<typeof productsWithTypeQuery>;
+  
+  const { data, error } = await productsWithTypeQuery;
+  if (error) throw error;
+  const productsWithType: ProductsWithType = data;
 
   return (
     <ul role="list" className="divide-y divide-gray-100">
-      {products && products.length > 0 ? (
-        products.map((product: Product) => (
+      {productsWithType && productsWithType.length > 0 ? (
+        productsWithType.map((product) => (
           <li key={product.id} className="flex justify-between gap-x-6 py-5">
             <div className="flex min-w-0 gap-x-4">
               <div className="min-w-0 flex-auto">
@@ -31,7 +28,7 @@ export default async function Page() {
               </div>
             </div>
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-              <p className="text-sm leading-6 text-gray-900">${product.Price.toFixed(2)}</p>
+              <p className="text-sm leading-6 text-gray-900">€{product.Price && product.Price.toFixed(2)}</p>
             </div>
           </li>
         ))
