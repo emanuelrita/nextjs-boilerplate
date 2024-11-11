@@ -14,7 +14,7 @@ export default async function Page() {
                 <p className="text-sm/6 font-semibold text-gray-900">{product.Name}</p>
                 <p className="mt-1 truncate text-xs/5 text-gray-500">{product.Description}</p>
                 <p className="mt-1 truncate text-xs/5 text-gray-500">{JSON.stringify(product.ProductType)}</p>
-                {product.ProductType != null && (
+                {product.ProductType && product.ProductType.TypeName && (
                   <p className="mt-1 truncate text-xs/5 text-gray-500">{product.ProductType.TypeName}</p>
                 )}
               </div>
@@ -30,6 +30,7 @@ export default async function Page() {
     </ul>
   );
 }
+
 
 
 
