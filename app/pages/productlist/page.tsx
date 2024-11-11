@@ -5,7 +5,9 @@ type Product = {
   Name: string
   Description: string
   Price: number
-  ProductType: { TypeName: string }[]
+  ProductType: {
+    TypeName: string
+  }
 }
 
 export default async function Page() {
@@ -23,8 +25,8 @@ export default async function Page() {
               <div className="min-w-0 flex-auto">
                 <p className="text-sm font-semibold leading-6 text-gray-900">{product.Name}</p>
                 <p className="mt-1 truncate text-xs leading-5 text-gray-500">{product.Description}</p>
-                {product.ProductType && product.ProductType.length > 0 && (
-                  <p className="mt-1 truncate text-xs leading-5 text-gray-500">{product.ProductType[0].TypeName}</p>
+                {product.ProductType && (
+                  <p className="mt-1 truncate text-xs leading-5 text-gray-500">{product.ProductType.TypeName}</p>
                 )}
               </div>
             </div>
