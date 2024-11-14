@@ -2,7 +2,7 @@
 import Image from "next/image";
 import MyCard from "@/components/ui/myCard";
 import ClientButton from "@/components/ui/clientButton";
-import Link from "next/link";
+
 
 
 export default function Home() {
