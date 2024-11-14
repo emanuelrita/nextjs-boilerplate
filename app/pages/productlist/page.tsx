@@ -8,7 +8,7 @@ export default async function Page() {
   const productsWithType  = await GetProductsServer();
 
   return (
-    <ul role="list" className="divide-y divide-gray-100">
+    <ul role="list" className="w-1/3 m-12 border p-4 rounded-md shadow divide-y divide-gray-100">
       {productsWithType && productsWithType.length > 0 ? (
         productsWithType.map((product) => (
           <li key={product.id} className="flex justify-between gap-x-6 py-5">

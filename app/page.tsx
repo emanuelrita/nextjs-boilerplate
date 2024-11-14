@@ -15,6 +15,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
       <MyCard></MyCard>
       <Link href={"pages/testvalues"} className="bg-blue-500 text-white font-bold p-4 rounded ">Test Values</Link>
+      <Link href={"pages/productlist"} className="bg-blue-500 text-white font-bold p-4 rounded ">Product List</Link>
       <ClientButton></ClientButton>
         <Image
           className="dark:invert"
