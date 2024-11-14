@@ -28,7 +28,7 @@ export default async function Page() {
         ))
       ) : (
         <li>No products found</li>
-      )}
+      )}  
     </ul>
   )
 }

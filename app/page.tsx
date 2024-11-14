@@ -11,11 +11,9 @@ export default function Home() {
 
   return (
 
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">    
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">    
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <MyCard></MyCard>
-      <Link href={"pages/testvalues"} className="bg-blue-500 text-white font-bold p-4 rounded ">Test Values</Link>
-      <Link href={"pages/productlist"} className="bg-blue-500 text-white font-bold p-4 rounded ">Product List</Link>
+      <MyCard></MyCard>      
       <ClientButton></ClientButton>
         <Image
           className="dark:invert"
