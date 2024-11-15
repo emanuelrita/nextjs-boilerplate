@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 
-export default function ClientButton() {
+export default function ClientButton({label = 'Button'  }){
   const [counter, setCount] = useState(0);
 
   function handleClick() {
@@ -13,7 +13,7 @@ export default function ClientButton() {
   return (
     <div>
       <p>Count: {counter}</p>
-      <button onClick={handleClick} className='bg-blue-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded'>Button</button>
+      <button onClick={handleClick} className='bg-blue-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded'>{label ? label : "Button"}</button>
     </div>
   );
 }

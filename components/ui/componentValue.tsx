@@ -1,7 +1,7 @@
-export default function ComponentValue({ StringValue }: { StringValue: string }) {
+export default function ComponentValue({ stringValue }: { stringValue: string }) {
   return (
     
-      <p className="font-bold">{StringValue}</p>
+      <p className="font-bold">{stringValue}</p>
       
   );
 }

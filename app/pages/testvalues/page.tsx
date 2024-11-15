@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRef } from "react";
 import ComponentValue from "@/components/ui/componentValue";
+import ClientButton from "@/components/ui/clientButton";
 
 
 
@@ -22,7 +23,8 @@ export default function Page() {
     const [inputValue, setInputValue] = useState("INITIAL VALUE");
 
     return (
-        <div>
+        <div className="p-20">
+            <ClientButton label="Client Button" />
             <h1>{var1}</h1>
             <div>
                 <h2>Counter: {counter}</h2>
@@ -41,7 +43,7 @@ export default function Page() {
                     <input name="MyInput" className="border text-black w-full" value={inputValue} onChange={e => setInputValue(e.target.value)}></input>
                 </div>
                 <div>
-                    <ComponentValue StringValue={inputValue} />
+                    <ComponentValue stringValue={inputValue} />
                 </div>                
             </div>
         </div>
