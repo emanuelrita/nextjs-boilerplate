@@ -33,6 +33,7 @@ export default function RootLayout({
           <Link href={"/"} className="bg-blue-500 text-white font-bold text-center p-4 rounded w-36 ">Home</Link>                
           <Link href={"/pages/testvalues"} className="bg-blue-500 text-white font-bold text-center p-4 rounded w-36 ml-4">Test Values</Link>                    
           <Link href={"/pages/productlist"} className="bg-blue-500 text-white font-bold text-center p-4 rounded w-36 ml-4">Product List</Link>          
+          <Link href={"/pages/addproduct"} className="bg-blue-500 text-white font-bold text-center p-4 rounded w-36 ml-4">Add Product</Link> 
         </div>
         {children}
       </body>
