@@ -49,7 +49,7 @@ export default function AddProduct() {
       alert('Error adding product. Please try again.')
       console.error('Error adding product:', error)
     } else {
-      alert('Product added successfully!')
+      alert('Product added successfully! ' + (data ? data : ""))
       router.push('/') // Redirect to home page or products list
     }
   }

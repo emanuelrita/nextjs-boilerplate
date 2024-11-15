@@ -1,8 +1,6 @@
 
 import Image from "next/image";
 import MyCard from "@/components/ui/myCard";
-import ClientButton from "@/components/ui/clientButton";
-
 
 
 export default function Home() {
