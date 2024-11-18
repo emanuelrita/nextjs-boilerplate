@@ -18,7 +18,7 @@ export default function AddProduct() {
     fetchProductTypes()
   }, [])
 
-  async function fetchProductTypes() {
+  const fetchProductTypes= async () => {
     const { data, error } = await supabase
       .from('ProductType')
       .select('id, TypeName')
