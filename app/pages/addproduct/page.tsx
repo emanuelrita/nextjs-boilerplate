@@ -50,7 +50,7 @@ export default function AddProduct() {
       console.error('Error adding product:', error)
     } else {
       alert('Product added successfully! ' + (data ? data : ""))
-      router.push('/') // Redirect to home page or products list
+      router.push('/pages/productlist') // Redirect to home page or products list
     }
   }
 

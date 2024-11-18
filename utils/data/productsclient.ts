@@ -1,11 +1,11 @@
 import { QueryData } from "@supabase/supabase-js/dist/module/lib/types";
-import { createClient } from "../supabase/server";
+import { createClient } from "../supabase/client";
 
 
 
-export  async function GetProductsServer() {
+export  async function GetProductsClient() {
 
-    const supabase = await createClient()
+    const supabase = createClient()
     const productsWithTypeQuery = supabase
       .from("Products")
       .select(`id, Name, Description, Price, ProductType(TypeName)`);
@@ -19,8 +19,8 @@ export  async function GetProductsServer() {
 
 }
 
-export async function DeleteProductServer(productId: number) {
-  const supabase = await createClient();
+export async function DeleteProductClient(productId: number) {
+  const supabase =  createClient();
   const { error } = await supabase
     .from("Products")
     .delete()
