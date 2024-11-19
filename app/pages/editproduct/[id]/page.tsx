@@ -2,8 +2,14 @@
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { use } from 'react'
 
-export default function EditProduct({ params }: { params: { id: string } }) {
+type Params = {
+  id: string;
+};
+
+export default function EditProduct({ params: paramsPromise }: { params: Promise<Params> }) {
+  const params = use(paramsPromise)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -148,4 +154,4 @@ export default function EditProduct({ params }: { params: { id: string } }) {
       </form>
     </div>
   )
-}
+  }

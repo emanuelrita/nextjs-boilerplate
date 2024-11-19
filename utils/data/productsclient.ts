@@ -8,7 +8,7 @@ export  async function GetProductsClient() {
     const supabase = createClient()
     const productsWithTypeQuery = supabase
       .from("Products")
-      .select(`id, Name, Description, Price, ProductType(TypeName)`);
+      .select(`id, Name, Description, Price, ProductType(TypeName)`).order('id');
     type ProductsWithType = QueryData<typeof productsWithTypeQuery>;
   
     const { data, error } = await productsWithTypeQuery;
