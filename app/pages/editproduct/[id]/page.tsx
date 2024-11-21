@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import { decrypt } from '@/utils/encryption'
 import { use } from 'react'
+import { FetchProductTypes } from '@/utils/data/productsclient'
 
 type Params = {
   id: string;
@@ -28,7 +29,7 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
       console.log('Params ID:', params.id);
       try {
         const decrypted = decrypt(params.id);        
-        setDecryptedId(decrypted);
+        setDecryptedId(decrypted);        
         fetchProductTypes();
         fetchProductDetails(decrypted);
       } catch (error) {
@@ -43,15 +44,8 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
   }, [params]);
 
   async function fetchProductTypes() {
-    const { data, error } = await supabase
-      .from('ProductType')
-      .select('id, TypeName')
-    
-    if (error) {
-      console.error('Error fetching product types:', error)
-    } else {
-      setProductTypes(data || [])
-    }
+    const producttypes = await FetchProductTypes();
+    setProductTypes(producttypes || []) 
   }
 
   async function fetchProductDetails(id: string) {

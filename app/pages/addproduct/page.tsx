@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { FetchProductTypes } from '@/utils/data/productsclient'
 
 export default function AddProduct() {
   const [name, setName] = useState('')
@@ -18,16 +19,9 @@ export default function AddProduct() {
     fetchProductTypes()
   }, [])
 
-  const fetchProductTypes= async () => {
-    const { data, error } = await supabase
-      .from('ProductType')
-      .select('id, TypeName')
-    
-    if (error) {
-      console.error('Error fetching product types:', error)
-    } else {
-      setProductTypes(data || [])
-    }
+  async function fetchProductTypes() {
+    const producttypes = await FetchProductTypes();
+    setProductTypes(producttypes || []) 
   }
 
   async function handleSubmit(e: React.FormEvent) {
