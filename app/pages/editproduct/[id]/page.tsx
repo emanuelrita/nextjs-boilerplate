@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { decrypt } from '@/utils/encryption'
 import { use } from 'react'
 
 type Params = {
@@ -16,13 +17,30 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
   const [productTypeId, setProductTypeId] = useState('')
   const [productTypes, setProductTypes] = useState<Array<{ id: number; TypeName: string | null }>>([])
   const [loading, setLoading] = useState(false)
+  const [decryptedId, setDecryptedId] = useState<string | null>(null)
   const router = useRouter()
   const supabase = createClient()
+ 
+ 
 
   useEffect(() => {
-    fetchProductTypes()
-    fetchProductDetails()
-  }, [])
+    if (params && params.id) {
+      console.log('Params ID:', params.id);
+      try {
+        const decrypted = decrypt(params.id);        
+        setDecryptedId(decrypted);
+        fetchProductTypes();
+        fetchProductDetails(decrypted);
+      } catch (error) {
+        console.error('Error decrypting ID:', error);
+        if (error instanceof Error) {
+          console.error('Error message:', error.message);          
+        }
+        alert('Invalid product ID. Redirecting to product list.');
+        router.push('/pages/productlist');
+      }
+    }
+  }, [params]);
 
   async function fetchProductTypes() {
     const { data, error } = await supabase
@@ -36,11 +54,11 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
     }
   }
 
-  async function fetchProductDetails() {
+  async function fetchProductDetails(id: string) {
     const { data, error } = await supabase
       .from('Products')
       .select('*, ProductType(id, TypeName)')
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
 
     if (error) {
@@ -55,6 +73,10 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!decryptedId) {
+      alert('Invalid product ID. Please try again.')
+      return
+    }
     setLoading(true)
 
     const { error } = await supabase
@@ -65,7 +87,7 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
         Price: parseFloat(price),
         ProductType_Id: parseInt(productTypeId)
       })
-      .eq('id', params.id)
+      .eq('id', decryptedId)
 
     setLoading(false)
 
@@ -80,6 +102,10 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
 
   function handleCancel() {
     router.push('/pages/productlist')
+  }
+
+  if (!decryptedId) {
+    return <div>Loading...</div>
   }
 
   return (

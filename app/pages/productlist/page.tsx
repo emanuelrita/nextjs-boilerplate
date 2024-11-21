@@ -2,6 +2,7 @@
 import { GetProductsClient, DeleteProductClient } from '@/utils/data/productsclient';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { encrypt } from '@/utils/encryption'
 
 export default function Page() {
   interface Product {
@@ -64,8 +65,8 @@ export default function Page() {
               </div>
               <div className="shrink-0 flex flex-col sm:items-end">
                 <p className="text-sm leading-6 text-gray-900">€{product.Price ? product.Price.toFixed(2) : '0.00'}</p>
-                <div className="mt-2 flex space-x-2">
-                  <Link href={`/pages/editproduct/${product.id}`}>
+                <div className="mt-2 flex space-x-2">               
+                <Link href={`/pages/editproduct/${ encrypt(product.id.toString())}`}>
                     <button className="px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full hover:bg-blue-200">
                       Edit
                     </button>
