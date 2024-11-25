@@ -4,26 +4,26 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
   const supabase = createClient()
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { error } = await supabase.auth.signUp({ email, password })
     if (error) {
-      alert('Error logging in')
+      alert('Error registering')
     } else {
-      router.push('/pages/home')
+      router.push('/pages/login')
     }
   }
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md">
-        <h2 className="text-2xl mb-4">Login</h2>
+      <form onSubmit={handleRegister} className="bg-white p-8 rounded shadow-md">
+        <h2 className="text-2xl mb-4">Register</h2>
         <div className="mb-4">
           <label className="block mb-2">Email</label>
           <input
@@ -46,15 +46,6 @@ export default function Login() {
         </div>
         <div className="flex justify-center">
           <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-            Login
-          </button>
-        </div>
-        <div className="flex justify-center mt-4">
-          <button
-            type="button"
-            onClick={() => router.push('/pages/register')}
-            className="text-blue-500 underline"
-          >
             Register
           </button>
         </div>

@@ -1,12 +1,17 @@
+
 import Image from "next/image";
+import MyCard from "@/components/ui/myCard";
 
 
+export default function Home() {
+  
 
-export default function Page() {
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1>New Page</h1>
+    <div>
+  <MyCard></MyCard>  
+    <div className="grid grid-rows items-center justify-items-center min-h-screen  gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">         
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">              
         <Image
           className="dark:invert"
           src="https://nextjs.org/icons/next.svg"
@@ -99,6 +104,7 @@ export default function Page() {
           Go to nextjs.org →
         </a>
       </footer>
+    </div>
     </div>
   );
 }
