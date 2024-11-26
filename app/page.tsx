@@ -1,14 +1,28 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState,useEffect } from 'react'
+import { useRouter,usePathname } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
   const supabase = createClient()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        router.push('/pages/home')
+      }
+    }
+    checkAuth()
+  }, [pathname, router, supabase.auth])
+
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,7 +36,7 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md">
+      <form onSubmit={handleLogin} className="bg-white p-10 rounded shadow-md w-96">
         <h2 className="text-2xl mb-4">Login</h2>
         <div className="mb-4">
           <label className="block mb-2">Email</label>
@@ -45,17 +59,18 @@ export default function Login() {
           />
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+          <button type="submit" className="bg-blue-500 text-white p-2 w-24 rounded">
             Login
           </button>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-8">
+          Don´t have an account?
           <button
             type="button"
             onClick={() => router.push('/pages/register')}
-            className="text-blue-500 underline"
+            className="text-blue-500 underline ml-1"
           >
-            Register
+            register here
           </button>
         </div>
       </form>
