@@ -1,4 +1,3 @@
-import Image from "next/image";
 import MyCard from "@/components/ui/myCard";
 
 
