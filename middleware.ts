@@ -1,7 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
-
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next()
 
@@ -34,8 +33,14 @@ export async function middleware(request: NextRequest) {
       '/pages/editproduct'
     ]
 
+    const publicRoutes = ['/', '/pages/register']
+
     if (protectedRoutes.includes(request.nextUrl.pathname) && !user) {
       return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    if (publicRoutes.includes(request.nextUrl.pathname) && user) {
+      return NextResponse.redirect(new URL('/pages/home', request.url))
     }
 
     return response
@@ -44,13 +49,14 @@ export async function middleware(request: NextRequest) {
   }
 }
 
-
-
 export const config = {
   matcher: [
+    '/',
+    '/pages/register',
     '/pages/home',
     '/pages/testvalues',
     '/pages/productlist',
     '/pages/addproduct',
+    '/pages/editproduct',
   ],
 }

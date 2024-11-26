@@ -1,7 +1,7 @@
 'use client'
 
-import { useState,useEffect } from 'react'
-import { useRouter,usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 
 
@@ -10,18 +10,6 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const router = useRouter()
   const supabase = createClient()
-  const pathname = usePathname()
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        router.push('/pages/home')
-      }
-    }
-    checkAuth()
-  }, [pathname, router, supabase.auth])
-
 
 
   const handleLogin = async (e: React.FormEvent) => {
