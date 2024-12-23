@@ -22,11 +22,10 @@ export default function Login() {
     }
   }
 
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-blue-100">
       <form onSubmit={handleLogin} className="bg-white p-10 rounded shadow-md w-96">
-        <h2 className="text-2xl mb-4">Login</h2>
+        <h2 className="text-2xl mb-4 ">Login</h2>
         <div className="mb-4">
           <label className="block mb-2">Email</label>
           <input
