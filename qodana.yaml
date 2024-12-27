@@ -4,13 +4,17 @@ profile:
   name: qodana.recommended
 #include:
  # - name: CheckDependencyLicenses
-  #  paths:
-   #   - app
-    #  - lib
-     # - supabase
-      #- components
-      #- utils
-      #- middleware.ts
+include:
+ - name: Eslint
+     paths:
+       - app
+       - lib
+       - supabase
+       - components
+       - utils
+       - middleware.ts
+
+
 
 
 
