@@ -5,8 +5,6 @@ profile:
   #include:
   # - name: CheckDependencyLicenses
 ide: QDJS
-include:
-  - name: Eslint
 exclude:
   - name: All
     paths:
