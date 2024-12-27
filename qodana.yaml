@@ -4,16 +4,9 @@ profile:
   name: qodana.recommended
   #include:
   # - name: CheckDependencyLicenses
+ide: QDJS
 include:
   - name: Eslint
-    paths:
-      - app
-      - components
-      - utils
-      - supabase
-      - lib
-      - middleware.ts
-
 exclude:
   - name: All
     paths:
