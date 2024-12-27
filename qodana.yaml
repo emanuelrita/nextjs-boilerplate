@@ -4,7 +4,6 @@ profile:
   name: qodana.recommended
   #include:
   # - name: CheckDependencyLicenses
-ide: QDJS
 exclude:
   - name: All
     paths:
