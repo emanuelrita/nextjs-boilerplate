@@ -9,11 +9,10 @@ include:
     paths:
       - app
       - components
-
-
-
-
-
+      - utils
+      - supabase
+      - lib
+      - middleware.ts
 
 exclude:
   - name: All
