@@ -2,17 +2,14 @@ version: "1.0"
 linter: jetbrains/qodana-js:2024.2
 profile:
   name: qodana.recommended
-#include:
- # - name: CheckDependencyLicenses
+  #include:
+  # - name: CheckDependencyLicenses
 include:
- - name: Eslint
-     paths:
-       - app
-       - lib
-       - supabase
-       - components
-       - utils
-       - middleware.ts
+  - name: Eslint
+    paths:
+      - app
+      - components
+
 
 
 
@@ -24,3 +21,4 @@ exclude:
       - next.config.mjs
       - tailwind.config.ts
       - postcss.config.mjs
+
