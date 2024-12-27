@@ -4,6 +4,8 @@ profile:
   name: qodana.recommended
   #include:
   # - name: CheckDependencyLicenses
+include:
+    - name: Eslint
 exclude:
   - name: All
     paths:
