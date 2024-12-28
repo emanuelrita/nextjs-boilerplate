@@ -29,8 +29,7 @@ export function decrypt(text: string): string {
     const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);    
-    const result = decrypted.toString();        
-    return result;
+    return decrypted.toString();
   } catch (error) {    
     if (error instanceof Error) {
       console.error('Error message:', error.message);
