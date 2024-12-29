@@ -41,13 +41,14 @@ export default function EditProduct({ params: paramsPromise }: { params: Promise
         router.push('/pages/productlist');
       }
     }
-  }, [params]);
+  }, [fetchProductDetails, params, router]);
 
   async function fetchProductTypes() {
     const producttypes = await FetchProductTypes();
     setProductTypes(producttypes || []) 
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function fetchProductDetails(id: string) {
     const { data, error } = await supabase
       .from('Products')
